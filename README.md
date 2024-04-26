@@ -1,4 +1,4 @@
 # Fruchtsalat
  Eine Website über Früchte
-
- Manu auch hier
+Genau.
+>>>>>>> 82c909f741941226e91b526239fdbc198d292732
