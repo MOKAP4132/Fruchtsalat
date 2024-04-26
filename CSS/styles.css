@@ -1,7 +1,263 @@
+/* Base styles */
 body {
-    background-color: pink;
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background: #eaeaea;
+    color: #333;
 }
 
-h1 {
-    color: green;
+/* Header styles */
+header {
+    background-color: #ffcb05; /* Pokemon yellow */
+    color: #003a70; /* Pokemon blue */
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+/* Main content styles */
+main {
+    max-width: 1400px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* Search box styles */
+#search {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* To include padding in the width */
+}
+
+/* Card container */
+.cardContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 5px;
+}
+
+/* Card styles */
+.pokemonCard {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    overflow: hidden;
+    font-family: 'Arial', sans-serif;
+    transition: transform 0.2s ease;
+    flex: 0 0 33%;
+}
+
+.pokemonCard:hover {
+    transform: translateY(-5px);
+}
+
+.cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: #f4f4f4;
+}
+
+.cardHeader h2 {
+    margin: 0;
+    color: #003a70;
+    font-size: 1.5em;
+}
+
+.typesContainer {
+    display: flex;
+    align-items: center;
+}
+
+/* Icon styling */
+.icon {
+    border-radius: 100%;
+    height: 40px; /* Adjust size as needed */
+    width: 40px; /* Adjust size as needed */
+    transition: 200ms all;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.icon:hover{
+    filter: saturate(500%);
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.icon img {
+    height: 70%; /* Adjust the percentage as needed */
+    width: 70%; /* Adjust the percentage as needed */
+    margin: 15%; /* Adjust the percentage as needed */
+}
+
+.pokemonImage {
+    width: 100%;
+    display: block;
+}
+
+
+.detailsDiv {
+    padding: 10px;
+    /* background: #eaeaea; */
+    /* Existing styles */
+}
+
+.statsList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; /* This will distribute space evenly around the items */
+    align-items: center; /* This aligns items vertically */
+    list-style-type: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.statsList li {
+    background: #fff; /* White background for the stats "cards" */
+    border: 1px solid #ddd; /* A subtle border */
+    border-radius: 4px; /* Rounded corners */
+    margin: 5px;
+    padding: 5px 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    flex-basis: calc(33.333% - 10px); /* Take up one-third of the container width, minus margin */
+    text-align: center; /* Center the text */
+}
+
+.statsList strong {
+    font-weight: bold;
+    color: #003a70;
+    display: block; /* Makes the stat name take a full line for emphasis */
+}
+
+
+/* Responsive layout adjustments */
+@media (max-width: 1024px) {
+    .pokemonCard {
+        width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 768px) {
+    .pokemonCard {
+        width: calc(50% - 20px);
+        flex: 0 0 100%;
+    }
+}
+
+/* Responsive layout adjustments */
+@media (max-width: 600px) {
+    .pokemonCard {
+        width: 100%;
+        flex: 0 0 100%;
+    }
+
+}
+
+
+/* Type icons colors and shadows */
+
+
+.bug {
+    background: #92BC2C;
+    box-shadow: 0 0 10px #92BC2C;
+}
+
+.dark {
+    background: #595761;
+    box-shadow: 0 0 10px #595761;
+}
+
+.dragon {
+    background: #0C69C8;
+    box-shadow: 0 0 10px #0C69C8;
+}
+
+.electric {
+    background: #F2D94E;
+    box-shadow: 0 0 10px #F2D94E;
+}
+
+.fire {
+    background: #FBA54C;
+    box-shadow: 0 0 10px #FBA54C;
+}
+
+.fairy {
+    background: #EE90E6;
+    box-shadow: 0 0 10px #EE90E6;
+}
+
+.fighting {
+    background: #D3425F;
+    box-shadow: 0 0 10px #D3425F;
+}
+
+.flying {
+    background: #A1BBEC;
+    box-shadow: 0 0 10px #A1BBEC;
+}
+
+.ghost {
+    background: #5F6DBC;
+    box-shadow: 0 0 10px #5F6DBC;
+}
+
+.grass {
+    background: #5FBD58;
+    box-shadow: 0 0 10px #5FBD58;
+}
+
+.ground {
+    background: #DA7C4D;
+    box-shadow: 0 0 10px #DA7C4D;
+}
+
+.ice {
+    background: #75D0C1;
+    box-shadow: 0 0 10px #75D0C1;
+}
+
+.normal {
+    background: #A0A29F;
+    box-shadow: 0 0 10px #A0A29F;
+}
+
+.poison {
+    background: #B763CF;
+    box-shadow: 0 0 10px #B763CF;
+}
+
+.psychic {
+    background: #FA8581;
+    box-shadow: 0 0 10px #FA8581;
+}
+
+.rock {
+    background: #C9BB8A;
+    box-shadow: 0 0 10px #C9BB8A;
+}
+
+.steel {
+    background: #5695A3;
+    box-shadow: 0 0 10px #5695A3;
+}
+
+.water {
+    background: #539DDF;
+    box-shadow: 0 0 10px #539DDF;
 }
