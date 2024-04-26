@@ -1,33 +1,33 @@
 //Konstanten und Variablen definieren
-const searchBocks = document.querySelector('#search');
+const searchBox = document.querySelector('#search');
 const app = document.querySelector('#app');
-const anzahlPokemon = 151;
-let allPokemon = [];
+const anzahlFrucht = 49;
+let allFrucht = [];
 
 //___________________________________________________________
 //Kernfunktionen
 //___________________________________________________________
 
-//Die ursprünglichen 151 werden geladen, in allPokemon gespeichert und die Karten erstellt
+//Die ursprünglichen 151 werden geladen, in allFrucht gespeichert und die Karten erstellt
 async function init() {
-    let url = `https://pokeapi.co/api/v2/pokemon?limit=${anzahlPokemon}&offset=0`;
-    let pokemonWithoutDetails = await fetchData(url);
-    allPokemon = await Promise.all(pokemonWithoutDetails.results.map(async (pokemon) => {
-        let detailedData = await fetchData(pokemon.url); // Fetch detailed data for each Pokémon
+    let url = `https://www.fruityvice.com/api/fruit/all`;
+    let fruchtWithoutDetails = await fetchData(url);
+    allFrucht = await Promise.all(fruchtWithoutDetails.results.map(async (frucht) => {
+        let detailedData = await fetchData(frucht.url); // Fetch detailed data for each Frucht
         return detailedData; // Return detailed data instead of basic
     }));
-    allPokemon.forEach(pokemon => {
-        createCard(pokemon);
+    allFrucht.forEach(frucht => {
+        createCard(frucht);
     });
 }
 
 
 //Eingabe wird geprüft, das Array gefiltert und die Karten neu erstellt
-async function suchePokemon(searchInput) {
-    let filteredPokemon = allPokemon.filter(wantedPokemon => wantedPokemon.name.includes(searchInput));
+async function sucheFrucht(searchInput) {
+    let filteredFrucht = allFrucht.filter(wantedFrucht => wantedFrucht.name.includes(searchInput));
     app.innerHTML = '';
-    filteredPokemon.forEach(pokemon => {
-        createCard(pokemon);
+    filteredFrucht.forEach(frucht => {
+        createCard(frucht);
     });
 }
 
@@ -42,9 +42,9 @@ document.addEventListener('DOMContentLoaded', function () {
     init();
 });
 
-//eventlistener searchBocks input
-searchBocks.addEventListener('input', function () {
-    suchePokemon(searchBocks.value);
+//eventlistener searchBox input
+searchBox.addEventListener('input', function () {
+    sucheFrucht(searchBox.value);
 });
 
 
@@ -64,23 +64,23 @@ async function fetchData(url) {  // asynchrone Funktion, die auf ein Promise war
     }
 }
 
-//PokeCard erstellen
-function createCard(pokemon) {
+//FruchtCard erstellen
+function createCard(frucht) {
     let card = document.createElement('div');
-    card.className = 'pokemonCard';
+    card.className = 'fruchtCard';
 
     // Header area with name and types
     let cardHeader = document.createElement('div');
     cardHeader.className = 'cardHeader';
 
     let nameElement = document.createElement('h2');
-    nameElement.textContent = pokemon.name;
+    nameElement.textContent = frucht.name;
     cardHeader.appendChild(nameElement);
 
     let typesContainer = document.createElement('div');
     typesContainer.className = 'typesContainer';
 
-    pokemon.types.forEach(item => {
+    frucht.types.forEach(item => {
         let typeIcon = document.createElement('div');
         typeIcon.className = `icon ${item.type.name}`; // Use the class for the type
         let typeSVG = document.createElement('img');
@@ -94,11 +94,11 @@ function createCard(pokemon) {
     card.appendChild(cardHeader);
 
     // Image
-    let pokemonImage = document.createElement('img');
-    pokemonImage.src = pokemon.sprites.other.home.front_default; //hier ist in der API das Bild des Pokemons hinterlegt
-    pokemonImage.alt = pokemon.name;
-    pokemonImage.className = 'pokemonImage';
-    card.appendChild(pokemonImage);
+    let fruchtImage = document.createElement('img');
+    fruchtImage.src = frucht.sprites.other.home.front_default; //hier ist in der API das Bild der Frucht hinterlegt
+    fruchtImage.alt = frucht.name;
+    fruchtImage.className = 'fruchtImage';
+    card.appendChild(fruchtImage);
 
     // Details area with stats
     let detailsDiv = document.createElement('div');
@@ -107,7 +107,7 @@ function createCard(pokemon) {
     let statsList = document.createElement('ul');
     statsList.className = 'statsList';
 
-    pokemon.stats.forEach(stat => {
+    frucht.stats.forEach(stat => {
         let statItem = document.createElement('li');
         let statName = document.createElement('strong');
         statName.textContent = `${stat.stat.name}: `;
@@ -121,10 +121,3 @@ function createCard(pokemon) {
 
     app.appendChild(card);
 }
-
-
-
-
-
-
-//___________________________________________________________
