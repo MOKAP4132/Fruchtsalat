@@ -8,20 +8,28 @@ let allFrucht = [];
 //Kernfunktionen
 //___________________________________________________________
 
-//Die ursprünglichen 151 werden geladen, in allFrucht gespeichert und die Karten erstellt
+//Die ursprünglichen 49 werden geladen, in allFrucht gespeichert und die Karten erstellt
 async function init() {
-    let url = `https://www.fruityvice.com/api/fruit/all`;
-    let fruchtWithoutDetails = await fetchData(url);
-    allFrucht = await Promise.all(fruchtWithoutDetails.results.map(async (frucht) => {
-        let detailedData = await fetchData(frucht.url); // Fetch detailed data for each Frucht
-        return detailedData; // Return detailed data instead of basic
+    let FruchtDetails = await fetchData('https://www.fruityvice.com/api/fruit/all');
+    allFrucht = await Promise.all(FruchtDetails.results.map(async (frucht) => {
+        let fruchtDetails = await fetchData(frucht.url);
+        return fruchtDetails;
     }));
     allFrucht.forEach(frucht => {
         createCard(frucht);
     });
 }
 
-
+async function fetchData(url) {
+    try {
+        let response = await fetch(url);
+        let data = await response.json();
+        return data;
+    } catch (error) {
+        console.log(error);
+    }
+}
+       
 //Eingabe wird geprüft, das Array gefiltert und die Karten neu erstellt
 async function sucheFrucht(searchInput) {
     let filteredFrucht = allFrucht.filter(wantedFrucht => wantedFrucht.name.includes(searchInput));
@@ -51,18 +59,6 @@ searchBox.addEventListener('input', function () {
 //___________________________________________________________
 //Grundfunktionen
 //___________________________________________________________
-
-//Fetch
-async function fetchData(url) {  // asynchrone Funktion, die auf ein Promise wartet
-    try { // try-catch-Block, um Fehler abzufangen
-        let response = await fetch(url); // auf das Promise warten und dann die Response in die Variable speichern
-        let data = await response.json(); // Extract JSON from the http response
-        return data;
-    }
-    catch (error) { // Fehlerbehandlung
-        console.log(error);
-    }
-}
 
 //FruchtCard erstellen
 function createCard(frucht) {
@@ -121,3 +117,5 @@ function createCard(frucht) {
 
     app.appendChild(card);
 }
+
+
