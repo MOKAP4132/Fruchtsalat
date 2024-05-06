@@ -83,48 +83,30 @@ function createCard(frucht) { //hier wird die Karte erstellt
     fruchtImage.className = 'fruchtImage';
     card.appendChild(fruchtImage);
     
-    let Kalorien = document.createElement('div');
-    Kalorien.className = 'Kalorien${frucht.name}';
-    Kalorien.textContent = `Kalorien: ${frucht.nutritions.calories}`;
-    card.appendChild(Kalorien);
+   
+    let list = document.createElement('ul');
+    list.className = 'NutritionList';
+    card.appendChild(list);
 
-    let Fett = document.createElement('div');
-    Fett.className = 'Fett${frucht.name}';
-    Fett.textContent = `Fett: ${frucht.nutritions.fat}`;
-    card.appendChild(Fett);
+    let Kalorien = document.createElement('li');
+    Kalorien.textContent = `Calories: ${frucht.nutritions.calories}`;
+    list.appendChild(Kalorien);
 
-    let Protein = document.createElement('div');
-    Protein.className = 'Protein${frucht.name}';
+    let Fett = document.createElement('li');
+    Fett.textContent = `Fat: ${frucht.nutritions.fat}`;
+    list.appendChild(Fett);
+
+    let Protein = document.createElement('li');
     Protein.textContent = `Protein: ${frucht.nutritions.protein}`;
-    card.appendChild(Protein);
+    list.appendChild(Protein);
 
-    let Kohlenhydrate = document.createElement('div');
-    Kohlenhydrate.className = 'Kohlenhydrate${frucht.name}';
-    Kohlenhydrate.textContent = `Kohlenhydrate: ${frucht.nutritions.carbohydrates}`;
-    card.appendChild(Kohlenhydrate);
+    let Kohlenhydrate = document.createElement('li');
+    Kohlenhydrate.textContent = `Carbohydrates: ${frucht.nutritions.carbohydrates}`;
+    list.appendChild(Kohlenhydrate);
 
-    let Zucker = document.createElement('div');
-    Zucker.className = 'Zucker${frucht.name}';
-    Zucker.textContent = `Zucker: ${frucht.nutritions.sugar}`;
-    card.appendChild(Zucker);
-
-    // let detailsDiv = document.createElement('div');
-    // detailsDiv.className = 'detailsDiv';
-
-    // let statsList = document.createElement('ul');
-    // statsList.className = 'statsList';
-
-    // frucht.stats.forEach(stat => {
-    //     let statItem = document.createElement('li');
-    //     let statName = document.createElement('strong');
-    //     statName.textContent = `${stat.stat.name}: `;
-    //     statItem.appendChild(statName);
-    //     statItem.appendChild(document.createTextNode(stat.base_stat));
-    //     statsList.appendChild(statItem);
-    // });
-
-    // detailsDiv.appendChild(statsList);
-    // card.appendChild(detailsDiv);
+    let Zucker = document.createElement('li');
+    Zucker.textContent = `Sugar: ${frucht.nutritions.sugar}`;
+    list.appendChild(Zucker);
 
     app.appendChild(card);
 }

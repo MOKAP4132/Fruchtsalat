@@ -47,7 +47,7 @@ main {
 }
 
 /* Card styles */
-.pokemonCard {
+.fruchtCard {
     background: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -58,7 +58,7 @@ main {
     flex: 0 0 33%;
 }
 
-.pokemonCard:hover {
+.fruchtCard:hover {
     transform: translateY(-5px);
 }
 
@@ -76,48 +76,15 @@ main {
     font-size: 1.5em;
 }
 
-.typesContainer {
-    display: flex;
-    align-items: center;
-}
 
-/* Icon styling */
-.icon {
-    border-radius: 100%;
-    height: 40px; /* Adjust size as needed */
-    width: 40px; /* Adjust size as needed */
-    transition: 200ms all;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 10px;
-}
 
-.icon:hover{
-    filter: saturate(500%);
-    transform: scale(1.1);
-    cursor: pointer;
-}
-
-.icon img {
-    height: 70%; /* Adjust the percentage as needed */
-    width: 70%; /* Adjust the percentage as needed */
-    margin: 15%; /* Adjust the percentage as needed */
-}
-
-.pokemonImage {
+.fruchtImage {
     width: 100%;
     display: block;
 }
 
 
-.detailsDiv {
-    padding: 10px;
-    /* background: #eaeaea; */
-    /* Existing styles */
-}
-
-.statsList {
+.NutritionList {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around; /* This will distribute space evenly around the items */
@@ -127,7 +94,7 @@ main {
     margin: 10px 0;
 }
 
-.statsList li {
+.NutritionList li {
     background: #fff; /* White background for the stats "cards" */
     border: 1px solid #ddd; /* A subtle border */
     border-radius: 4px; /* Rounded corners */
@@ -138,7 +105,7 @@ main {
     text-align: center; /* Center the text */
 }
 
-.statsList strong {
+.NutritionList strong {
     font-weight: bold;
     color: #003a70;
     display: block; /* Makes the stat name take a full line for emphasis */
@@ -147,13 +114,13 @@ main {
 
 /* Responsive layout adjustments */
 @media (max-width: 1024px) {
-    .pokemonCard {
+    .fruchtCard {
         width: calc(50% - 20px);
     }
 }
 
 @media (max-width: 768px) {
-    .pokemonCard {
+    .fruchtCard {
         width: calc(50% - 20px);
         flex: 0 0 100%;
     }
@@ -161,7 +128,7 @@ main {
 
 /* Responsive layout adjustments */
 @media (max-width: 600px) {
-    .pokemonCard {
+    .fruchtCard {
         width: 100%;
         flex: 0 0 100%;
     }
