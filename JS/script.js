@@ -22,6 +22,7 @@ async function fetchData(url) { //die fetch Funktion wird aufgerufen
     try { 
         let response = await fetch(url); 
         let data = await response.json(); 
+        allFrucht = data;
         return data; 
     } catch (error) { 
         console.log(error);
@@ -34,7 +35,6 @@ async function sucheFrucht(searchInput) {
     let filteredFrucht = allFrucht.filter(wantedFrucht => wantedFrucht.name.includes(searchInput)); //hier wird das Array gefiltert
     app.innerHTML = ''; //hier wird der Inhalt des app-Elements geleert
     filteredFrucht.forEach(frucht => { //forEach durchläuft alle Elemente des Arrays
-
         createCard(frucht);//und erstellt für jedes Element eine Karte
     });
 }
@@ -53,6 +53,7 @@ document.addEventListener('DOMContentLoaded', function () { //wenn die Seite gel
 //eventlistener searchBox input
 searchBox.addEventListener('input', function () { //wenn in das Suchfeld etwas eingegeben wird, wird die Funktion sucheFrucht aufgerufen
     sucheFrucht(searchBox.value);
+    
 });
 
 
