@@ -10,32 +10,32 @@ let allFrucht = [];
 
 //Die ursprünglichen 49 werden geladen, in allFrucht gespeichert und die Karten erstellt
 async function init() {
-    let FruchtDetails = await fetchData('https://www.fruityvice.com/api/fruit/all');
-    allFrucht = await Promise.all(FruchtDetails.results.map(async (frucht) => {
-        let fruchtDetails = await fetchData(frucht.url);
-        return fruchtDetails;
-    }));
-    allFrucht.forEach(frucht => {
+    let fruit = await fetchData('API/api_extract.php'); //hier wird die fetch Funktion aufgerufen
+    console.log(fruit);
+    fruit.forEach(frucht => {
         createCard(frucht);
     });
 }
 
-async function fetchData(url) {
-    try {
-        let response = await fetch(url);
-        let data = await response.json();
-        return data;
-    } catch (error) {
+
+async function fetchData(url) { //die fetch Funktion wird aufgerufen
+    try { 
+        let response = await fetch(url); 
+        let data = await response.json(); 
+        return data; 
+    } catch (error) { 
         console.log(error);
     }
 }
-       
+
+
 //Eingabe wird geprüft, das Array gefiltert und die Karten neu erstellt
 async function sucheFrucht(searchInput) {
-    let filteredFrucht = allFrucht.filter(wantedFrucht => wantedFrucht.name.includes(searchInput));
-    app.innerHTML = '';
-    filteredFrucht.forEach(frucht => {
-        createCard(frucht);
+    let filteredFrucht = allFrucht.filter(wantedFrucht => wantedFrucht.name.includes(searchInput)); //hier wird das Array gefiltert
+    app.innerHTML = ''; //hier wird der Inhalt des app-Elements geleert
+    filteredFrucht.forEach(frucht => { //forEach durchläuft alle Elemente des Arrays
+
+        createCard(frucht);//und erstellt für jedes Element eine Karte
     });
 }
 
@@ -46,12 +46,12 @@ async function sucheFrucht(searchInput) {
 //___________________________________________________________
 
 //dom loaded
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function () { //wenn die Seite geladen ist, wird die Funktion init aufgerufen
     init();
 });
 
 //eventlistener searchBox input
-searchBox.addEventListener('input', function () {
+searchBox.addEventListener('input', function () { //wenn in das Suchfeld etwas eingegeben wird, wird die Funktion sucheFrucht aufgerufen
     sucheFrucht(searchBox.value);
 });
 
@@ -61,59 +61,69 @@ searchBox.addEventListener('input', function () {
 //___________________________________________________________
 
 //FruchtCard erstellen
-function createCard(frucht) {
+function createCard(frucht) { //hier wird die Karte erstellt
     let card = document.createElement('div');
     card.className = 'fruchtCard';
 
     // Header area with name and types
-    let cardHeader = document.createElement('div');
+    let cardHeader = document.createElement('div'); //hier wird der Header der Karte erstellt
     cardHeader.className = 'cardHeader';
 
-    let nameElement = document.createElement('h2');
-    nameElement.textContent = frucht.name;
-    cardHeader.appendChild(nameElement);
-
-    let typesContainer = document.createElement('div');
-    typesContainer.className = 'typesContainer';
-
-    frucht.types.forEach(item => {
-        let typeIcon = document.createElement('div');
-        typeIcon.className = `icon ${item.type.name}`; // Use the class for the type
-        let typeSVG = document.createElement('img');
-        typeSVG.src = `icons/${item.type.name}.svg`; // Assuming you have SVGs named after types
-        typeSVG.alt = item.type.name;
-        typeIcon.appendChild(typeSVG);
-        typesContainer.appendChild(typeIcon);
-    });
-
-    cardHeader.appendChild(typesContainer);
+    let nameElement = document.createElement('h2'); //hier wird die Überschrift der Frucht erstellt
+    nameElement.textContent = frucht.name; //hier wird der Name der Frucht eingefügt
+    cardHeader.appendChild(nameElement); //für jedes Element wird ein Kind erstellt
     card.appendChild(cardHeader);
 
-    // Image
+
+    // // Image
     let fruchtImage = document.createElement('img');
-    fruchtImage.src = frucht.sprites.other.home.front_default; //hier ist in der API das Bild der Frucht hinterlegt
+    fruchtImage.src =`../pictures/${frucht.name}.png`; //hier ist in der API das Bild der Frucht hinterlegt
     fruchtImage.alt = frucht.name;
     fruchtImage.className = 'fruchtImage';
     card.appendChild(fruchtImage);
+    
+    let Kalorien = document.createElement('div');
+    Kalorien.className = 'Kalorien${frucht.name}';
+    Kalorien.textContent = `Kalorien: ${frucht.nutritions.calories}`;
+    card.appendChild(Kalorien);
 
-    // Details area with stats
-    let detailsDiv = document.createElement('div');
-    detailsDiv.className = 'detailsDiv';
+    let Fett = document.createElement('div');
+    Fett.className = 'Fett${frucht.name}';
+    Fett.textContent = `Fett: ${frucht.nutritions.fat}`;
+    card.appendChild(Fett);
 
-    let statsList = document.createElement('ul');
-    statsList.className = 'statsList';
+    let Protein = document.createElement('div');
+    Protein.className = 'Protein${frucht.name}';
+    Protein.textContent = `Protein: ${frucht.nutritions.protein}`;
+    card.appendChild(Protein);
 
-    frucht.stats.forEach(stat => {
-        let statItem = document.createElement('li');
-        let statName = document.createElement('strong');
-        statName.textContent = `${stat.stat.name}: `;
-        statItem.appendChild(statName);
-        statItem.appendChild(document.createTextNode(stat.base_stat));
-        statsList.appendChild(statItem);
-    });
+    let Kohlenhydrate = document.createElement('div');
+    Kohlenhydrate.className = 'Kohlenhydrate${frucht.name}';
+    Kohlenhydrate.textContent = `Kohlenhydrate: ${frucht.nutritions.carbohydrates}`;
+    card.appendChild(Kohlenhydrate);
 
-    detailsDiv.appendChild(statsList);
-    card.appendChild(detailsDiv);
+    let Zucker = document.createElement('div');
+    Zucker.className = 'Zucker${frucht.name}';
+    Zucker.textContent = `Zucker: ${frucht.nutritions.sugar}`;
+    card.appendChild(Zucker);
+
+    // let detailsDiv = document.createElement('div');
+    // detailsDiv.className = 'detailsDiv';
+
+    // let statsList = document.createElement('ul');
+    // statsList.className = 'statsList';
+
+    // frucht.stats.forEach(stat => {
+    //     let statItem = document.createElement('li');
+    //     let statName = document.createElement('strong');
+    //     statName.textContent = `${stat.stat.name}: `;
+    //     statItem.appendChild(statName);
+    //     statItem.appendChild(document.createTextNode(stat.base_stat));
+    //     statsList.appendChild(statItem);
+    // });
+
+    // detailsDiv.appendChild(statsList);
+    // card.appendChild(detailsDiv);
 
     app.appendChild(card);
 }
