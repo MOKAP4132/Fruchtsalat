@@ -14,8 +14,54 @@
         <h1>Fruchtsalat</h1>
     </header>
     <main>
-        <input type="text"  id="search" placeholder="Search your fruit">
+        <div class="sortby">
+            <label for="sortOptions"> sort by: </label>
+            <select id="sortOptions">
+                <option value="aufsteigend"> A-Z </option>
+                <option value="absteigend"> Z-A </option>
+            </select>
+        </div>
+
+        <input type="text"  id="search" placeholder="search your fruit">
+
+        <div id="filter"> filter by family: 
+            <button id="all"> Show all</button>
+            <button id="Actinidiaceae"> Actinidiaceae</button>
+            <button id="Anacardiaceae"> Anacardiaceae</button>
+            <button id="Annonaceae"> Annonaceae</button>
+            <button id="Betulaceae"> Betulaceae</button>
+            <button id="Bromeliaceae"> Bromeliaceae</button>
+            <button id="Cactaceae"> Cactaceae</button>
+            <button id="Caricaceae"> Caricaceae</button>
+            <button id="Clusiaceae"> Clusiaceae</button>
+            <button id="Cucurbitaceae"> Cucurbitaceae</button>
+            <button id="Ebenaceae"> Ebenaceae</button>
+            <button id="Ericaceae"> Ericaceae</button>
+            <button id="Grossulariaceae"> Grossulariaceae</button>
+            <button id="Lauraceae"> Lauraceae</button>
+            <button id="Lythraceae"> Lythraceae</button>
+            <button id="Malvaceae"> Malvaceae </button>
+            <button id="Moraceae"> Moraceae </button>
+            <button id="Musaceae"> Musaceae </button>
+            <button id="Myrtaceae"> Myrtaceae</button>
+            <button id="Passifloraceae"> Passifloraceae</button>
+            <button id="Rosaceae"> Rosaceae</button>
+            <button id="Rutaceae"> Rutaceae</button>
+            <button id="Salicaceae"> Salicaceae</button>
+            <button id="Sapindaceae"> Sapindaceae</button>
+            <button id="Solanaceae"> Solanaceae</button>
+            <button id="Vitaceae"> Vitaceae</button>
+        </div>
+        <div id="popup">
+            <div class="popup-content">
+                <span class="close">&times;</span>
+                <div id="popup-fruitCard"></div>
+            </div>
+        </div>
+
         <div id="app" class="cardContainer"></div>
+
+
     </main>
     <footer>
             <p>designed by Yara B., Moritz K. und Manuela K. </p>

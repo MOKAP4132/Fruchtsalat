@@ -1,6 +1,7 @@
 //Konstanten und Variablen definieren
 const searchBox = document.querySelector('#search');
 const app = document.querySelector('#app');
+const searchOptions = document.querySelector("#sortOptions");
 const anzahlFrucht = 49;
 let allFrucht = [];
 
@@ -11,11 +12,33 @@ let allFrucht = [];
 //Die ursprünglichen 49 werden geladen, in allFrucht gespeichert und die Karten erstellt
 async function init() {
     let fruit = await fetchData('API/api_extract.php'); //hier wird die fetch Funktion aufgerufen
-    console.log(fruit);
+    //console.log(fruit);
+    fruit.sort((a, b) => a.name.localeCompare(b.name));
     fruit.forEach(frucht => {
         createCard(frucht);
     });
-}
+
+    
+    // const fruchtCard = document.querySelectorAll('.fruchtCard');
+    // fruchtCard.forEach(element => {
+    //     element.addEventListener('click', function() {
+    //         if (this.classList.contains('clicked')) {
+    //             fruchtCard.forEach(card => {
+    //                 card.classList.remove('clicked');
+    //             });
+    //         } else {
+    //             fruchtCard.forEach(card => {
+    //                 card.classList.remove('clicked');
+    //             });
+    //             this.classList.add('clicked');
+                
+    //         }
+            
+    //     });
+    // });
+       
+    
+}    
 
 
 async function fetchData(url) { //die fetch Funktion wird aufgerufen
@@ -32,14 +55,36 @@ async function fetchData(url) { //die fetch Funktion wird aufgerufen
 
 //Eingabe wird geprüft, das Array gefiltert und die Karten neu erstellt
 async function sucheFrucht(searchInput) {
-    let filteredFrucht = allFrucht.filter(wantedFrucht => wantedFrucht.name.includes(searchInput)); //hier wird das Array gefiltert
-    app.innerHTML = ''; //hier wird der Inhalt des app-Elements geleert
-    filteredFrucht.forEach(frucht => { //forEach durchläuft alle Elemente des Arrays
-        createCard(frucht);//und erstellt für jedes Element eine Karte
+    // Konvertiere den Suchbegriff in Kleinbuchstaben
+    searchInput = searchInput.toLowerCase();
+    // Filtere das Array `allFrucht`, indem die Groß- und Kleinschreibung ignoriert wird
+    let filteredFrucht = allFrucht.filter(frucht => frucht.name.toLowerCase().includes(searchInput));
+    // Leere den Inhalt des app-Elements
+    app.innerHTML = '';
+    // Erstelle Karten für jedes gefilterte Frucht-Objekt
+    filteredFrucht.forEach(frucht => {
+        createCard(frucht);
     });
 }
 
+// Sortierung A-Z, Z-A
+function sortList(searchInput) {
+    // Filtere die Liste, um sicherzustellen, dass nur Zeichenfolgen vorhanden sind
 
+    // Zugriff auf deine Liste von Elementen, die sortiert werden sollen
+    if (searchInput === "aufsteigend") {
+        allFrucht.sort((a, b) => a.name.localeCompare(b.name));
+    } else if (searchInput === "absteigend") {
+        allFrucht.sort((a, b) => b.name.localeCompare(a.name));
+    }
+    // // Leere den Inhalt des app-Elements
+    app.innerHTML = '';
+
+    // Erstelle Karten für jedes Element in der sortierten Liste
+    allFrucht.forEach(frucht => {
+     createCard(frucht); // Annahme: createCard ist eine Funktion, die eine Karte für ein gegebenes Element erstellt
+    });
+}
 
 //___________________________________________________________
 //Eventlistener
@@ -47,7 +92,42 @@ async function sucheFrucht(searchInput) {
 
 //dom loaded
 document.addEventListener('DOMContentLoaded', function () { //wenn die Seite geladen ist, wird die Funktion init aufgerufen
+    
+    var buttons = document.getElementById('filter');
+    let filteredFrucht;
+    buttons.addEventListener('click', function(e) {
+        if(e.target.nodeName != "BUTTON") {
+            return;
+            //filteredFrucht = allFrucht;
+        }
+        buttons.querySelectorAll('button').forEach(function(el) {
+            el.classList.remove("clicked");
+        });
+        e.target.classList.add("clicked");
+
+        if (e.target.id != "all") {
+            filteredFrucht = filterByFamily(e.target.id)
+            
+        } else {
+            filteredFrucht = allFrucht;
+        }
+        app.innerHTML = '';
+            // Erstelle Karten für jedes Element in der sortierten Liste
+            filteredFrucht.forEach(frucht => {
+                createCard(frucht); // Annahme: createCard ist eine Funktion, die eine Karte für ein gegebenes Element erstellt
+        });
+
+    //     let filteredFrucht = filterByFamily('Moraceae');
+        // alert('Button clicked');
+        
+       //init();
+       
+    });
+
     init();
+    popupCard();
+
+        
 });
 
 //eventlistener searchBox input
@@ -55,6 +135,49 @@ searchBox.addEventListener('input', function () { //wenn in das Suchfeld etwas e
     sucheFrucht(searchBox.value);
     
 });
+
+searchOptions.addEventListener("change", function() {
+    sortList(searchOptions.value);
+});
+
+
+async function popupCard() {
+    await init();
+    const popup = document.getElementById('popup');
+    const popupContent = document.getElementById('popup-fruitCard');
+    const closeBtn = document.querySelector('.close');
+    const fruchtCard = document.querySelectorAll('.fruchtCard');
+    console.log(fruchtCard);
+
+    fruchtCard.forEach(element => {
+        element.addEventListener('click', function(event) {
+            console.log(event.target);
+                const clickedCard = this.cloneNode(true); // Clone the clicked card
+                console.log(clickedCard);
+                popupContent.innerHTML = ''; // Clear previous content
+                popupContent.appendChild(clickedCard); // Add clicked card to the popup
+                popup.style.display = 'block'; // Display the popup
+            
+            
+        });
+    });
+
+
+    // Event listener to close the popup when close button is clicked
+    closeBtn.addEventListener('click', function() {
+        popup.style.display = 'none';
+    });
+
+    // Event listener to close the popup when clicking outside the popup content
+    window.addEventListener('click', function(event) {
+        if (event.target === popup) {
+            popup.style.display = 'none';
+        }
+    });
+}
+
+
+
 
 
 //___________________________________________________________
@@ -88,6 +211,10 @@ function createCard(frucht) { //hier wird die Karte erstellt
     list.className = 'NutritionList';
     card.appendChild(list);
 
+    let Familie = document.createElement('li');
+    Familie.textContent = `Family: ${frucht.family}`;
+    list.appendChild(Familie);
+
     let Kalorien = document.createElement('li');
     Kalorien.textContent = `Calories: ${frucht.nutritions.calories}`;
     list.appendChild(Kalorien);
@@ -110,5 +237,13 @@ function createCard(frucht) { //hier wird die Karte erstellt
 
     app.appendChild(card);
 }
+// filter
+function filterByFamily(familyparameter) {
+   return allFrucht.filter(frucht => frucht.family === familyparameter);
+}
+
+
+
+       
 
 

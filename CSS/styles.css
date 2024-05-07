@@ -37,6 +37,10 @@ footer{
     text-align: center;
 }
 
+p{
+    margin: 10px
+}
+
 /* Search box styles */
 #search {
     width: 100%;
@@ -44,6 +48,16 @@ footer{
     margin-bottom: 20px;
     border: 1px solid #213452; 
     box-sizing: border-box; /* To include padding in the width */
+}
+
+div.sortby {
+    padding-bottom: 20px;
+    /* margin: 20px; */
+}
+
+#sortOptions:hover {
+    background-color: #213452;
+    color: #F6F4F5;
 }
 
 /* Card container */
@@ -71,22 +85,45 @@ footer{
     cursor: pointer;
 }
 
-.fruchtCard:active {
-    transform: translateY(0);
-    position: fixed;
+
+/* .fruchtCard.clicked {
+    transform: scale(1.3);
+    z-index: 999;
+    margin: 0 auto;
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 80%;
-    height: 80%;
-    z-index: 9999;
+    background: #F6F4F5;
+} */
+
+.fruchtCard.clicked {
+    background: #F6F4F5;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    overflow: hidden;
+    font-family: 'Truculenta', sans-serif;
+    transition: transform 0.2s ease;
+    flex: 0 0 33%;
+    border: 1px solid #213452;
+    transform: scale(1.3);
+    z-index: 999;
+}
+
+/* Styles for fruchtCard */
+.fruchtCard {
+    cursor: pointer;
+    padding: 10px;
     background-color: #fff;
-    overflow: auto;
+    border-radius: 5px;
+    margin: 10px;
 }
 
 .cardHeader {
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    text-align: center; 
+    justify-content: center;
     padding: 10px;
     background: #F6F4F5;
 }
@@ -127,12 +164,30 @@ footer{
     text-align: center; /* Center the text */
 }
 
+.NutritionList li:hover {
+    background-color: #6E819F;
+    border: 1px solid #ddd;
+    color: #F6F4F5;
+}
+
 .NutritionList strong {
     font-weight: bold;
-    color: #748465;
+    color: #213452;
     display: block; /* Makes the stat name take a full line for emphasis */
 }
 
+button{
+    background-color: #F6F4F5;
+    border: 1px solid #213452; 
+}
+
+button:hover{
+    background-color: #905e73;
+}
+
+button.clicked {
+    background: #6E819F;
+}
 
 /* Responsive layout adjustments */
 @media (max-width: 1024px) {
@@ -154,5 +209,4 @@ footer{
         width: 100%;
         flex: 0 0 100%;
     }
-
 }
