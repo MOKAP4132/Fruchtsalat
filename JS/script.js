@@ -18,25 +18,7 @@ async function init() {
         createCard(frucht);
     });
 
-    
-    // const fruchtCard = document.querySelectorAll('.fruchtCard');
-    // fruchtCard.forEach(element => {
-    //     element.addEventListener('click', function() {
-    //         if (this.classList.contains('clicked')) {
-    //             fruchtCard.forEach(card => {
-    //                 card.classList.remove('clicked');
-    //             });
-    //         } else {
-    //             fruchtCard.forEach(card => {
-    //                 card.classList.remove('clicked');
-    //             });
-    //             this.classList.add('clicked');
-                
-    //         }
-            
-    //     });
-    // });
-       
+
     
 }    
 
@@ -147,13 +129,10 @@ async function popupCard() {
     const popupContent = document.getElementById('popup-fruitCard');
     const closeBtn = document.querySelector('.close');
     const fruchtCard = document.querySelectorAll('.fruchtCard');
-    console.log(fruchtCard);
 
     fruchtCard.forEach(element => {
         element.addEventListener('click', function(event) {
-            console.log(event.target);
                 const clickedCard = this.cloneNode(true); // Clone the clicked card
-                console.log(clickedCard);
                 popupContent.innerHTML = ''; // Clear previous content
                 popupContent.appendChild(clickedCard); // Add clicked card to the popup
                 popup.style.display = 'block'; // Display the popup
