@@ -12,6 +12,12 @@ Des weiteren haben wir die API mit Bildern der Früchte ergänzt. Dies hilft der
 ## Learnings
 - Einbinden und Verarbeiten einer API
 - JavaScript
+    - Funktionen
+    - searchbox
+    - Filter
+    - Arrays
+    - Schleifen
+    - if and else
 
 ## Schwierigkeiten
 Aufgrund des Liveshares, konnten wir nur zur selben Zeit am selben Ort arbeiten. Bzw. musste zumindest Moritz erreichbar sein um eine Session zu starten.
