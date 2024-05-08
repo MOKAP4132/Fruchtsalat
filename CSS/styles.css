@@ -41,7 +41,7 @@ p{
     margin: 10px
 }
 
-/* Search box styles */
+/* Styles for search box */
 #search {
     width: 100%;
     padding: 10px;
@@ -50,8 +50,14 @@ p{
     box-sizing: border-box; /* To include padding in the width */
 }
 
+
+#sortOptions{
+    border-radius: 0px;
+    border: 1px solid #213452; 
+}
+
 div.sortby {
-    padding-top: 20px;
+    padding-top: 40px;
     padding-bottom: 20px;
     /* margin: 20px; */
 }
@@ -87,7 +93,7 @@ div.sortby {
 }
 
 
-.fruchtCard.clicked {
+/* .fruchtCard.clicked {
     transform: scale(1.3);
     z-index: 999;
     margin: 0 auto;
@@ -96,27 +102,31 @@ div.sortby {
     left: 50%;
     transform: translate(-50%, -50%);
     background: #F6F4F5;
-} 
+} */
 
-
+/* Styles for popup */
 .popup-fruchtCard .fruchtCard {
-     box-shadow: 50px 50px 50px rgba(0,0,0,0.8);
-     border: 0px solid black;
-     font-family: 'Truculenta', sans-serif;
-     transition: transform 0.2s ease;
-     z-index: 999;
-     position: fixed;
-     top: 50%;
-     left: 50%;
-     transform: translate(-50%, -50%);
-     padding: 0, 0, 0, 0;
-     margin: 0, 0, 0, 0;
+    box-shadow: 50px 50px 50px rgba(0,0,0,0.8);
+    margin: 0 auto;
+    border: 15px #333;
+    font-family: 'Truculenta', sans-serif;
+    transition: transform 0.2s ease;
+    z-index: 999;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: visible;
  }
 
 .close {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: -30px;
+    right: -30px;
     padding: 10px;
     background: #213452;
     color: #F6F4F5;
@@ -126,13 +136,14 @@ div.sortby {
     height: 40px;
     border-radius: 50%;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
 }
+
 /* Styles for fruchtCard */
 .fruchtCard {
     cursor: pointer;
     padding: 10px;
     background-color: #fff;
-    border-radius: 5px;
     margin: 10px;
 }
 
@@ -142,7 +153,7 @@ div.sortby {
     text-align: center; 
     justify-content: center;
     padding: 10px;
-    background: #F6F4F5;
+    /* background: #F6F4F5; */
 }
 
 .cardHeader h2 {
@@ -184,6 +195,7 @@ div.sortby {
     background-color: #6E819F;
     border: 1px solid #ddd;
     color: #F6F4F5;
+    cursor: default;
 }
 
 .NutritionList strong {
@@ -193,9 +205,19 @@ div.sortby {
 }
 
 
+/* Styles for filter option */
+#filter{
+    padding-bottom: 10px;
+}
+
 button{
     background-color: #F6F4F5;
     border: 1px solid #213452; 
+    cursor: pointer;
+}
+
+button#all{
+    font-weight: bold;
 }
 
 button:hover{
@@ -205,6 +227,182 @@ button:hover{
 button.clicked {
     background: #6E819F;
 }
+
+
+Card container
+
+.cardTeamContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 5px;
+    padding-top: 30px;
+}
+
+/* styles for Team site */
+.teamBackground {
+    background-color: #6E819F;
+}
+
+.teamHeader {
+    background-color: #D0AEBC;
+    color: #905e73;
+}
+
+/* styles for Team Cards */
+.teamCard {
+    padding: 10px;
+    margin: 10px;
+    background: #fff;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    overflow: hidden;
+    font-family: 'Truculenta', sans-serif;
+    transition: transform 0.2s ease;
+    flex: 0 0 33%;
+    border: 1px solid #905e73;
+    position: relative;
+    transform-style: preserve-3d; /* Behalte den 3D-Effekt beim Drehen bei */
+}
+
+.teamImage {
+    width: 100%;
+    display: block;
+}
+
+
+ul.infoList {
+    padding-inline-start: 0px;
+}
+
+
+.infoList li {
+    background: #F6F4F5; /* White background for the stats "cards" */
+    border: 1px solid #ddd; /* A subtle border */
+    margin: 5px;
+    padding: 5px 0px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    flex-basis: calc(33.333% - 10px); /* Take up one-third of the container width, minus margin */
+    text-align: center; /* Center the text */
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; /* This will distribute space evenly around the items */
+    align-items: center; /* This aligns items vertically */
+    padding-inline-start: 0px;
+}
+
+
+
+
+
+
+
+
+
+/* flipcard erstellen */
+/* _________________________________________*/
+.teamCardOuter {
+    width: 200px;
+    height: 260px;
+    border: 1px solid #CCC;
+    margin: 40px 0;
+    perspective: 600px;
+  }
+  
+  .teamCard {
+    width: 100%;
+    height: 100%;
+    transition: transform 1s opacity 0.1s 0.9s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    position: relative;
+  }
+  
+  .teamCard.is-flipped {
+    transform: scaleX(-1);
+  }
+  
+  .card__face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    line-height: 260px;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    font-size: 40px;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transition: transform 1s opacity 0.1s 0.9s;
+  }
+
+  .teamCard:not(.is-flipped) .card__face--back {
+    transform: scaleX(1);
+    opacity: 0;
+  }
+  .teamCard:not(.is-flipped) .card__face--front {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+  .teamCard.is-flipped .card__face--front {
+    transform: scaleX(-1);
+    opacity: 0;
+  }
+  .teamCard.is-flipped .card__face--back {
+    transform: scaleX(-1);
+    opacity: 1;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+/* Styles for Nav-Button */
+.teamVerlinkung {
+    background-color: #ddd;
+    color: #213452;
+    padding: 10px;
+    border: none;
+    font-family: 'Truculenta', sans-serif;
+    font-size: 16px;
+}
+
+.teamVerlinkung:hover {
+    background-color: #213452;
+    color: #ddd;
+    padding: 10px;
+    cursor: pointer;
+    font-family: 'Truculenta', sans-serif;
+    font-size: 16px;
+}
+
+.startVerlinkung {
+    background-color: #ddd;
+    color: #213452;
+    padding: 10px;
+    border: none;
+    font-family: 'Truculenta', sans-serif;
+    font-size: 16px;
+}
+
+.startVerlinkung:hover {
+    background-color: #905e73;
+    color: #ddd;
+    padding: 10px;
+    cursor: pointer;
+    font-family: 'Truculenta', sans-serif;
+    font-size: 16px;
+}
+
+
 
 /* Responsive layout adjustments */
 @media (max-width: 1024px) {

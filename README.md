@@ -20,11 +20,11 @@ Des weiteren haben wir die API mit Bildern der Früchte ergänzt. Dies hilft der
     - if and else
 
 ## Schwierigkeiten
-Aufgrund des Liveshares, konnten wir nur zur selben Zeit am selben Ort arbeiten. Bzw. musste zumindest Moritz erreichbar sein um eine Session zu starten.
+Aufgrund des Liveshares, konnten wir nur zur selben Zeit am selben Ort arbeiten. Bzw. musste zumindest Moritz erreichbar sein um eine Session zu starten. Dies hat auch einen Einfluss auf die Commits welche auf Github so natürlich nur von Moritz gemacht wurden. Ebenso wurde durch liveshare der Copilot nicht mehr erreichbar.
 
 ## benutzte Ressourcen
 - w3schools
 - Pokemon API
 - div. code-alongs
-- Coachings durch Nina und Aleen
+- Coachings durch Nina und Alen
 - ChatGPT
