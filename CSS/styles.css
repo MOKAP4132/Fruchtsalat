@@ -124,7 +124,7 @@ div.sortby {
     font-size: 50px;
     display: flex;
     justify-content: center;
-    align-items: center;
+
     top: -30px;
     right: -30px;
     padding: 10px;
@@ -229,17 +229,16 @@ button.clicked {
 }
 
 
-Card container
 
-.cardTeamContainer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 5px;
-    padding-top: 30px;
-}
 
+
+
+
+
+
+/* _________________________________________*/
 /* styles for Team site */
+/* _________________________________________*/
 .teamBackground {
     background-color: #6E819F;
 }
@@ -249,8 +248,28 @@ Card container
     color: #905e73;
 }
 
+/* flipcard erstellen */
+teamCardContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 5px;
+
+}
+
+
+.teamCardOuter {
+    width: 250px;
+    height: 320px;
+    margin: 40px 0;
+    perspective: 600px;
+  }
+  
+
 /* styles for Team Cards */
 .teamCard {
+    width: 500px;
+    height: 800px;
     padding: 10px;
     margin: 10px;
     background: #fff;
@@ -258,11 +277,12 @@ Card container
     margin-bottom: 20px;
     overflow: hidden;
     font-family: 'Truculenta', sans-serif;
-    transition: transform 0.2s ease;
+    transition: transform 1s opacity 0.2s 0.8s;
     flex: 0 0 33%;
     border: 1px solid #905e73;
     position: relative;
     transform-style: preserve-3d; /* Behalte den 3D-Effekt beim Drehen bei */
+    cursor: pointer;
 }
 
 .teamImage {
@@ -291,33 +311,6 @@ ul.infoList {
     align-items: center; /* This aligns items vertically */
     padding-inline-start: 0px;
 }
-
-
-
-
-
-
-
-
-
-/* flipcard erstellen */
-/* _________________________________________*/
-.teamCardOuter {
-    width: 200px;
-    height: 260px;
-    border: 1px solid #CCC;
-    margin: 40px 0;
-    perspective: 600px;
-  }
-  
-  .teamCard {
-    width: 100%;
-    height: 100%;
-    transition: transform 1s opacity 0.1s 0.9s;
-    transform-style: preserve-3d;
-    cursor: pointer;
-    position: relative;
-  }
   
   .teamCard.is-flipped {
     transform: scaleX(-1);
@@ -325,11 +318,13 @@ ul.infoList {
   
   .card__face {
     position: absolute;
-    width: 100%;
-    height: 100%;
-    line-height: 260px;
+    justify-content: space-around;
+    width: 500px;
+    height: 800px;
+    line-height: 60px;
     color: white;
     text-align: center;
+    align-items: center;
     font-weight: bold;
     font-size: 40px;
     -webkit-backface-visibility: hidden;

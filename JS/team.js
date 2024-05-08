@@ -24,83 +24,9 @@ let meinTeam = [
 ]
 
 
-
-// var card = document.querySelector('.card');
-// card.addEventListener( 'click', function() {
-//   card.classList.toggle('is-flipped');
-// });
-
-// teamCardContainer.innerHTML = "";
-// meinTeam.forEach(team => {
-//     let scene = document.createElement("div");
-//     scene.className = "scene scene--card";
-
-//     let card = document.createElement("div")
-//     card.className = "card";
-//     scene.appendChild(card);
-
-//     // Vorderseite
-//     let cardFront = document.createElement("div")
-//     cardFront.className = "card__face card__face--front";
-
-//     let frontHeader = document.createElement('div');
-//     frontHeader.className = 'cardHeader';
-
-//     let nameFrontElement = document.createElement('h2');
-//     nameFrontElement.textContent = team.name;
-//     frontHeader.appendChild(nameFrontElement);
-//     cardFront.appendChild(frontHeader);
-
-//     let teamImage = document.createElement('img');
-//     teamImage.src =`../pictures/${team.name}.png`;
-//     teamImage.alt = team.name;
-//     teamImage.className = 'teamImage';
-//     card.appendChild(teamImage);
-
-//     card.appendChild(cardFront);
-    
-//     // Rückseite
-//     let cardBack = document.createElement("div")
-//     cardBack.className = "card__face card__face--back";
-
-//     let backHeader = document.createElement('div');
-//     backHeader.className = 'cardHeader';
-    
-//     let nameBackElement = document.createElement('h2');
-//     nameBackElement.textContent = `Über ${team.name}`;
-//     backHeader.appendChild(nameBackElement);
-//     cardBack.appendChild(backHeader);
-
-//     let infoList = document.createElement('ul');
-//     infoList.className = 'infoList';
-//     card.appendChild(infoList);
-
-//     let city = document.createElement('li');
-//     city.textContent = `aus ${city[meinTeam.indexOf(team.name)]}`;
-//     infoList.appendChild(city);
-    
-//     let skills = document.createElement('li');
-//     skills.textContent = `ist besonders ${skills[meinTeam.indexOf(team.name)]}`;
-//     infoList.appendChild(skills);
-
-//     let age = document.createElement('li');
-//     age.textContent = `${age[meinTeam.indexOf(team.name)]}`;
-//     infoList.appendChild(age);
-
-//     //cardTeam.appendChild(card);
-
-//     card.appendChild(cardBack);
-
-//     card.addEventListener( 'click', function() {
-//         card.classList.toggle('is-flipped');
-//     });
-//     teamCardContainer.appendChild(scene);
-// });
 //__________________________________________________
 //dom loaded
 //__________________________________________________
-
-
 //__________________________________________________
 //Event Listener
 //__________________________________________________
@@ -117,10 +43,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
-
-// // Selektiere alle Elemente mit der Klasse 'teamCard'
-// const teamCards = document.querySelectorAll('.teamCard');
-
 
 
 //________________________________________________
@@ -197,73 +119,6 @@ function createCard(team) {
     cardBack.appendChild(infoList);
 
 
-
-
-
-
     teamCardContainer.appendChild(cardOuter);
 
-
-    
-    // let infoList = document.createElement('ul');
-    // infoList.className = 'infoList';
-    // card.appendChild(infoList);
-
-    // let city = document.createElement('li');
-    // city.textContent = `aus ${allcity[meinTeam.indexOf(team.name)]}`;
-    // infoList.appendChild(city);
-    
-    // let skills = document.createElement('li');
-    // skills.textContent = `ist besonders ${skills[meinTeam.indexOf(team.name)]}`;
-    // infoList.appendChild(skills);
-
-    // let age = document.createElement('li');
-    // age.textContent = `${age[meinTeam.indexOf(team.name)]}`;
-    // infoList.appendChild(age);
-
-    // cardTeam.appendChild(card);
-
-    // card.addEventListener('click', function() {
-    //     console.log("flip me")
-    //     if (card.classList.contains('back')) {
-    //         card.classList.remove('back');
-    //     } else {
-    //         card.classList.add('back');
-    //     }
-    //     flipCard(card); // Aufruf der flipCard-Funktion und Übergabe des geklickten Elements
-    // });
 }
-
-// function flipCard(card) {
-//     if (card.classList.contains('flipped')) {
-//         card.classList.remove('flipped');
-//     } else {
-//         card.classList.add('flipped');
-//     }
-
-//     let nameElement = document.createElement('h2');
-//     nameElement.textContent = "über mich";
-//     let cardHeader = card.querySelector(".cardHeader");
-//     cardHeader.appendChild(nameElement);
-//     card.appendChild(cardHeader);
-
-//     let infoList = document.createElement('ul');
-//     infoList.className = 'infoList';
-//     card.appendChild(infoList);
-
-//     let city = document.createElement('li');
-//     city.textContent = `aus ${city[meinTeam.indexOf(team.name)]}`;
-//     infoList.appendChild(city);
-    
-//     let skills = document.createElement('li');
-//     skills.textContent = `ist besonders ${skills[meinTeam.indexOf(team.name)]}`;
-//     infoList.appendChild(skills);
-
-//     let age = document.createElement('li');
-//     age.textContent = `${age[meinTeam.indexOf(team.name)]}`;
-//     infoList.appendChild(age);
-
-//     cardTeam.appendChild(card);
-// }
-
-
