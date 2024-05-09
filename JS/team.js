@@ -56,6 +56,9 @@ function createCard(team) {
     card.className = 'teamCard';
     cardOuter.appendChild(card);
 
+
+
+    
     //Vorderseite
     let cardFront = document.createElement("div")
     cardFront.className = "card__face card__face--front";
@@ -76,6 +79,7 @@ function createCard(team) {
     cardFront.appendChild(teamImage);
 
 
+
     //Hinterseite
     let cardBack = document.createElement("div")
     cardBack.className = "card__face card__face--back";
@@ -88,21 +92,19 @@ function createCard(team) {
     nameBackElement.textContent = `Über ${team.name}`;
 
 
+
     backHeader.appendChild(nameBackElement);
     cardBack.appendChild(backHeader);
 
 
-    
 
     let infoList = document.createElement('ul');
     infoList.className = 'infoList';
-
 
     let city = document.createElement('li');
     city.textContent = `aus ${team.city}`;
     infoList.appendChild(city);
 
-    
     let skills = document.createElement('li');
     skills.textContent = `ist besonders ${team.skills}`;
     infoList.appendChild(skills);
@@ -111,14 +113,9 @@ function createCard(team) {
     age.textContent = `${team.age}`;
     infoList.appendChild(age);
 
-//     //cardTeam.appendChild(card);
-
-//     card.appendChild(cardBack);
 
 
     cardBack.appendChild(infoList);
-
-
     teamCardContainer.appendChild(cardOuter);
 
 }
