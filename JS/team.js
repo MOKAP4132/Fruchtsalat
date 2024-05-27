@@ -7,19 +7,22 @@ let meinTeam = [
         name : "Yara",
         skills : ["kreativ"],
         age : 22,
-        city : "Zweisimmen"
+        city : "Zweisimmen",
+        favorite : "Ananas"
     },
     { 
         name : "Moritz",
         skills : ["sportlich"],
         age : 24,
-        city : "Muttenz"
+        city : "Muttenz",
+        favorite : "Kirsche"
     }, 
     { 
         name : "Manuela",
         skills : ["künstlerisch"],
         age : 23,
-        city : "Wangen"
+        city : "Wangen",
+        favorite : "Apfel"
     }
 ]
 
@@ -112,6 +115,10 @@ function createCard(team) {
     let age = document.createElement('li');
     age.textContent = `${team.age}`;
     infoList.appendChild(age);
+
+    let favorite = document.createElement('li');
+    favorite.textContent = `${team.favorite}`;
+    infoList.appendChild(favorite);
 
 
 
