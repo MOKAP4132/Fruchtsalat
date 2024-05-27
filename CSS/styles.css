@@ -59,7 +59,6 @@ p{
 div.sortby {
     padding-top: 40px;
     padding-bottom: 20px;
-    /* margin: 20px; */
 }
 
 #sortOptions:hover {
@@ -113,7 +112,7 @@ div.sortby {
     font-size: 50px;
     display: flex;
     justify-content: center;
-
+    align-items: center;
     top: -30px;
     right: -30px;
     padding: 10px;
@@ -237,31 +236,19 @@ button.clicked {
     color: #905e73;
 }
 
-/* flipcard erstellen */
-teamCardContainer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 5px;
-
-}
 
 
-.teamCardOuter {
-    display: flex;
+.teamCardOuter { 
     margin: 40px 10px 10px 10px;
   }
   
 
 /* styles for Team Cards */
-.teamCards {
+#teamCards {
     display: flex;
-    flex-wrap: wrap;
 }
 
 .teamCard {
-    position: relative;
-    width: calc(33.33% - 10px); /* Breite für drei Spalten abzüglich des Lückenabstands */
     margin-bottom: 20px; /* Abstand zwischen den Karten */
     perspective: 1000px; /* Perspective for 3D effect */
     padding: 10px 10px 10px 10px;
@@ -269,7 +256,7 @@ teamCardContainer {
     box-shadow: 0 5px 10px rgba(0,0,0,0.1);
     overflow: hidden;
     font-family: 'Truculenta', sans-serif;
-    transition: transform 1s opacity 0.2s 0.8s;
+    transition: transform 0.5s ease 0.1s, opacity 0.3s ease 0.1s;
     border: 1px solid #905e73;
     cursor: pointer;
 }
@@ -296,6 +283,7 @@ ul.infoList {
     list-style-type: none;
     text-align: center; /* Center the text */
     padding-inline-start: 0px;
+    padding: 5px;
 }
   
   .teamCard.is-flipped {
@@ -308,8 +296,24 @@ ul.infoList {
     align-items: center;
     -webkit-backface-visibility: hidden; 
     backface-visibility: hidden;
-    transition: transform 1s opacity 0.1s 0.9s;
+    transition: transform 0.5s ease 0.1s, opacity 0.3s ease 0.1s;
   }
+
+
+.card__face--back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 2em;
+}
+  
 
   .teamCard:not(.is-flipped) .card__face--back {
     transform: scaleX(1);
@@ -338,7 +342,7 @@ ul.infoList {
 
 
 
-/* Styles for Nav-Button */
+/* Styles Navigationsbutton */
 .teamVerlinkung {
     background-color: #ddd;
     color: #213452;
@@ -377,7 +381,7 @@ ul.infoList {
 
 
 
-/* Responsive layout adjustments */
+/* Responsive */
 @media (max-width: 1024px) {
     .fruchtCard {
         width: calc(50% - 20px);
@@ -389,9 +393,15 @@ ul.infoList {
         width: calc(50% - 20px);
         flex: 0 0 100%;
     }
+
+    #teamCards{
+        flex-direction: column;
+        width: calc(80%);
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
-/* Responsive layout adjustments */
 @media (max-width: 600px) {
     .fruchtCard {
         width: 100%;
