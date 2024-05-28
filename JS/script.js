@@ -6,14 +6,15 @@ const anzahlFrucht = 49;
 let allFrucht = [];
 let filteredFrucht = [];
 
+
+
+
+
 //___________________________________________________________
 //Kernfunktionen
 //___________________________________________________________
-
-//Die ursprünglichen 49 werden geladen, in allFrucht gespeichert und die Karten erstellt
 async function init() {
-    let fruit = await fetchData('API/api_extract.php'); //hier wird die fetch Funktion aufgerufen
-    //console.log(fruit);
+    let fruit = await fetchData('API/api_extract.php');
     fruit.sort((a, b) => a.name.localeCompare(b.name));
     fruit.forEach(frucht => {
         createCard(frucht);
@@ -22,7 +23,7 @@ async function init() {
 }    
 
 
-async function fetchData(url) { //die fetch Funktion wird aufgerufen
+async function fetchData(url) { 
     try { 
         let response = await fetch(url); 
         let data = await response.json(); 
@@ -34,8 +35,8 @@ async function fetchData(url) { //die fetch Funktion wird aufgerufen
 }
 
 
-//Eingabe wird geprüft, das Array gefiltert und die Karten neu erstellt
-async function sucheFrucht(searchInput, fruechte) {
+//Suchfeld für Früchte
+async function sucheFrucht(searchInput, fruechte) { //Eingabe wird geprüft, das Array gefiltert und die Karten neu erstellt
     // Konvertiere den Suchbegriff in Kleinbuchstaben
     searchInput = searchInput.toLowerCase();
     // Filtere das Array `allFrucht`, indem die Groß- und Kleinschreibung ignoriert wird
@@ -49,7 +50,7 @@ async function sucheFrucht(searchInput, fruechte) {
 
 }
 
-// Sortierung A-Z, Z-A
+// Sortierung A-Z, Z-A 
 function sortList(searchInput, fruechte) {
     // Filtere die Liste, um sicherzustellen, dass nur Zeichenfolgen vorhanden sind
 
@@ -72,125 +73,13 @@ function sortList(searchInput, fruechte) {
     sucheFrucht(currentSearchInput, fruechte)
 }
 
+//Fruchtcards erstellen
 
-
-//___________________________________________________________
-//Eventlistener
-//___________________________________________________________
-
-//dom loaded
-document.addEventListener('DOMContentLoaded', function () { //wenn die Seite geladen ist, wird die Funktion init aufgerufen
-    // Fruchtfamilie filtern
-    var buttons = document.getElementById('filter');
-
-    buttons.addEventListener('click', function(e) {
-        console.log("Kategorie Button gedrückt")
-        
-        
-        if(e.target.nodeName != "BUTTON") { //damit man den bereich um die Familien herum (das ganze div) nicht klicken kann
-            return;
-            //filteredFrucht = allFrucht;
-        }
-
-        
-
-
-        buttons.querySelectorAll('button').forEach(function(el) {//hier wird die klasse klicked entfernet
-            el.classList.remove("clicked");
-        });
-
-
-        e.target.classList.add("clicked");
-
-        if (e.target.id != "all") {
-            filteredFrucht = filterByFamily(e.target.id)
-            
-        } else {
-            filteredFrucht = allFrucht;
-        }
-
-        //doko added
-        sortList(searchOptions.value, filteredFrucht) // damit die Sortierung beibehalten bleibt!
-
-        //steht etwas in search bar
-        //falls ja, filteredfrucht auch nach dem buchstaben suchen
-        if(searchBox.value != "") {
-            sucheFrucht(searchBox.value, filteredFrucht); //überprüfen
-        } else {
-            app.innerHTML = '';
-            // Erstelle Karten für jedes Element in der sortierten Liste
-            filteredFrucht.forEach(frucht => {
-                createCard(frucht); // Annahme: createCard ist eine Funktion, die eine Karte für ein gegebenes Element erstellt
-            });
-        }
-
-    });
-
-    init();
-
-        
-});
-
-//eventlistener searchBox input
-searchBox.addEventListener('input', function () { //wenn in das Suchfeld etwas eingegeben wird, wird die Funktion sucheFrucht aufgerufen
-    if (filteredFrucht.length >0){
-        sucheFrucht(searchBox.value, filteredFrucht);
-    } else {                
-        sucheFrucht(searchBox.value, allFrucht);
-    }
-    
-});
-
-searchOptions.addEventListener("change", function() {
-    if (filteredFrucht.length >0){
-        sortList(searchOptions.value, filteredFrucht);
-    } else {                
-        sortList(searchOptions.value, allFrucht);
-    }
-    
-});
-
-function popupCard() {
-    //timeout function (workaround for the popup not working because objects are not loaded yet)
-    // setTimeout(function() {
-
-    const popup = document.getElementById('popup');
-    const popupContent = document.getElementById('popup-fruitCard');
-    const fruchtCard = document.querySelectorAll('.fruchtCard');
-    const closeBtn = document.createElement('span');
-    closeBtn.innerHTML = '✖';
-    closeBtn.classList.add('close');
-
-    fruchtCard.forEach(element => {
-        element.addEventListener('click', function(event) {
-                const clickedCard = this.cloneNode(true); // Clone the clicked card
-                clickedCard.appendChild(closeBtn); // Add close button to the clicked card
-                popupContent.innerHTML = ''; // Clear previous content
-                popupContent.appendChild(clickedCard); // Add clicked card to the popup
-                popup.style.display = 'block'; // Display the popup
-        });
-    });
-
-
-    // Event listener to close the popup when close button is clicked
-    closeBtn.addEventListener('click', function() {
-        popup.style.display = 'none';
-    });
-
-    // }, 500);
-}
-
-popup.style.display = 'none';
-//___________________________________________________________
-//Grundfunktionen
-//___________________________________________________________
-
-//FruchtCard erstellen
 function createCard(frucht) { //hier wird die Karte erstellt
     let card = document.createElement('div');
     card.className = 'fruchtCard';
 
-    // Header area with name and types
+    // Header Name
     let cardHeader = document.createElement('div'); //hier wird der Header der Karte erstellt
     cardHeader.className = 'cardHeader';
 
@@ -200,7 +89,7 @@ function createCard(frucht) { //hier wird die Karte erstellt
     card.appendChild(cardHeader);
 
 
-    // // Image
+    // Image
     let fruchtImage = document.createElement('img');
     fruchtImage.src =`../pictures/${frucht.name}.png`; //hier ist in der API das Bild der Frucht hinterlegt
     fruchtImage.alt = frucht.name;
@@ -244,6 +133,110 @@ function filterByFamily(familyparameter) {
    return allFrucht.filter(frucht => frucht.family === familyparameter);
 }
 
+
+
+
+
+
+//___________________________________________________________
+//Eventlistener
+//___________________________________________________________
+//eventlistener filter
+document.addEventListener('DOMContentLoaded', function () { //wenn die Seite geladen ist, wird die Funktion init aufgerufen
+    // Fruchtfamilie filtern
+    var buttons = document.getElementById('filter');
+
+    buttons.addEventListener('click', function(e) {
+        console.log("Kategorie Button gedrückt")
+        
+        
+        if(e.target.nodeName != "BUTTON") { //damit man den bereich um die Familien herum (das ganze div) nicht klicken kann
+            return;
+            //filteredFrucht = allFrucht;
+        }
+
+        buttons.querySelectorAll('button').forEach(function(el) {//hier wird die klasse klicked entfernet
+            el.classList.remove("clicked");
+        });
+
+
+        e.target.classList.add("clicked");
+
+        if (e.target.id != "all") {
+            filteredFrucht = filterByFamily(e.target.id)
+            
+        } else {
+            filteredFrucht = allFrucht;
+        }
+
+        sortList(searchOptions.value, filteredFrucht) // damit die Sortierung beibehalten bleibt!
+
+        //steht etwas in search bar? falls ja, filteredfrucht auch nach dem buchstaben suchen
+        if(searchBox.value != "") {
+            sucheFrucht(searchBox.value, filteredFrucht); //überprüfen
+        } else {
+            app.innerHTML = '';
+            // Erstelle Karten für jedes Element in der sortierten Liste
+            filteredFrucht.forEach(frucht => {
+                createCard(frucht); // Annahme: createCard ist eine Funktion, die eine Karte für ein gegebenes Element erstellt
+            });
+        }
+
+    });
+
+    init();
+
+        
+});
+
+//eventlistener searchBox input
+searchBox.addEventListener('input', function () { //wenn in das Suchfeld etwas eingegeben wird, wird die Funktion sucheFrucht aufgerufen
+    if (filteredFrucht.length >0){
+        sucheFrucht(searchBox.value, filteredFrucht);
+    } else {                
+        sucheFrucht(searchBox.value, allFrucht);
+    }
+    
+});
+
+searchOptions.addEventListener("change", function() {
+    if (filteredFrucht.length >0){
+        sortList(searchOptions.value, filteredFrucht);
+    } else {                
+        sortList(searchOptions.value, allFrucht);
+    }
+    
+});
+
+//eventlistener popup
+function popupCard() {
+    const popup = document.getElementById('popup');
+    const popupContent = document.getElementById('popup-fruitCard');
+    const fruchtCard = document.querySelectorAll('.fruchtCard');
+    const closeBtn = document.createElement('span');
+    closeBtn.innerHTML = '✖';
+    closeBtn.classList.add('close');
+
+    fruchtCard.forEach(element => {
+        element.addEventListener('click', function(event) {
+                const clickedCard = this.cloneNode(true); // Clone the clicked card
+                clickedCard.appendChild(closeBtn); // Add close button to the clicked card
+                popupContent.innerHTML = ''; // Clear previous content
+                popupContent.appendChild(clickedCard); // Add clicked card to the popup
+                popup.style.display = 'block'; // Display the popup
+        });
+    });
+
+
+    // Event listener to close the popup when close button is clicked
+    closeBtn.addEventListener('click', function() {
+        popup.style.display = 'none';
+    });
+
+    // }, 500);
+}
+
+popup.style.display = 'none';
 
 
        
