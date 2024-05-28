@@ -1,3 +1,4 @@
+/* Global Styles*/
 body {
     margin: 130px 0 0 0;
     padding: 0;
@@ -6,6 +7,7 @@ body {
     color: #333;
 }
 
+/* Header Styles*/
 header {
     background-color: #6E819F; 
     color: #213452; 
@@ -25,7 +27,38 @@ header h1 {
     font-size: 4em;
 }
 
-/* Main content styles */
+/* Navigation Button Styles */
+.teamVerlinkung {
+    background-color: #ddd;
+    color: #213452;
+    padding: 10px;
+    border: none;
+    font-family: 'Truculenta', sans-serif;
+    font-size: 16px;
+}
+
+.teamVerlinkung:hover {
+    background-color: #213452;
+    color: #ddd;
+    cursor: pointer;
+}
+
+.startVerlinkung {
+    background-color: #ddd;
+    color: #213452;
+    padding: 10px;
+    border: none;
+    font-family: 'Truculenta', sans-serif;
+    font-size: 16px;
+}
+
+.startVerlinkung:hover {
+    background-color: #905e73;
+    color: #ddd;
+    cursor: pointer;
+}
+
+/* Main Content Styles */
 main {
     max-width: 1400px;
     margin: 40px auto;
@@ -33,24 +66,26 @@ main {
     top: 500px;
 }
 
+/* Footer Styles */
 footer{
     text-align: center;
 }
 
+/* Paragraph Styles */
 p{
     margin: 10px
 }
 
-/* Styles for search box */
+/* Search Box Styles */
 #search {
     width: 100%;
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid #213452; 
-    box-sizing: border-box; /* To include padding in the width */
+    box-sizing: border-box;
 }
 
-
+/* Sort Options Styles */
 #sortOptions{
     border-radius: 0px;
     border: 1px solid #213452; 
@@ -66,7 +101,7 @@ div.sortby {
     color: #F6F4F5;
 }
 
-/* Card container */
+/* Card Container Styles */
 .cardContainer {
     display: flex;
     flex-wrap: wrap;
@@ -74,7 +109,7 @@ div.sortby {
     gap: 5px;
 }
  
-/* Card styles */
+/* Card Styles */
 .fruchtCard {
     background: #fff;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -91,14 +126,12 @@ div.sortby {
     display: block;
 }
 
-
 .fruchtCard:hover {
-    transform: translateY(-5px);
+    transform: translateY(-5px); /* Move the card up 5px*/
     cursor: pointer;
 }
 
-
-/* Styles for popup */
+/* Popup Card Styles */
 .popup-fruchtCard .fruchtCard {
     box-shadow: 50px 50px 50px rgba(0,0,0,0.8);
     margin: 0 auto;
@@ -113,6 +146,7 @@ div.sortby {
     overflow: visible;
  }
 
+ /* Close Button Styles */
 .close {
     position: absolute;
     font-size: 50px;
@@ -133,15 +167,13 @@ div.sortby {
     z-index: 9999;
 }
 
-
-
+/* Card Header Styles */
 .cardHeader {
     display: flex;
     align-items: center;
     text-align: center; 
     justify-content: center;
     padding: 10px;
-    /* background: #F6F4F5; */
 }
 
 .cardHeader h2 {
@@ -152,36 +184,35 @@ div.sortby {
     text-align: center;
 }
 
-
+/* Card Image Styles */
 .fruchtImage {
     width: 100%;
     display: block;
 }
 
-
+/* Nutrition List Styles */
 .NutritionList {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around; /* This will distribute space evenly around the items */
-    align-items: center; /* This aligns items vertically */
+    justify-content: space-around; /* Even space around items */
+    align-items: center; /* Aligns items vertically */
     list-style-type: none;
     padding: 0;
     margin: 10px 0;
 }
 
 .NutritionList li {
-    background: #F6F4F5; /* White background for the stats "cards" */
-    border: 1px solid #ddd; /* A subtle border */
+    background: #F6F4F5;
+    border: 1px solid #ddd;
     margin: 5px;
     padding: 5px 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-    flex-basis: calc(33.333% - 10px); /* Take up one-third of the container width, minus margin */
-    text-align: center; /* Center the text */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex-basis: calc(33.333% - 10px);
+    text-align: center;
 }
 
 .NutritionList li:hover {
     background-color: #6E819F;
-    border: 1px solid #ddd;
     color: #F6F4F5;
     cursor: default;
 }
@@ -189,15 +220,15 @@ div.sortby {
 .NutritionList strong {
     font-weight: bold;
     color: #213452;
-    display: block; /* Makes the stat name take a full line for emphasis */
+    display: block;
 }
 
-
-/* Styles for filter option */
+/* Filter Option Styles*/
 #filter{
     padding-bottom: 10px;
 }
 
+/* Button Filter Option Styles */
 button{
     background-color: #F6F4F5;
     border: 1px solid #213452; 
@@ -216,16 +247,8 @@ button.clicked {
     background: #6E819F;
 }
 
-
-
-
-
-
-
-
-
 /* _________________________________________*/
-/* styles for Team site */
+/* Team Site Styles */
 /* _________________________________________*/
 .teamBackground {
     background-color: #6E819F;
@@ -236,25 +259,18 @@ button.clicked {
     color: #905e73;
 }
 
-
-
+/* Team Cards Styles */
 .teamCardOuter { 
     margin: 40px 10px 10px 10px;
-    transition: transform 0.2s ease;
   }
   
-.teamCardOuter:hover {
-    transform: translateY(-5px);
-  }
-
-/* styles for Team Cards */
 #teamCards {
     display: flex;
 }
 
 .teamCard {
-    margin-bottom: 20px; /* Abstand zwischen den Karten */
-    perspective: 1000px; /* Perspective for 3D effect */
+    margin-bottom: 20px; /* space between cards */
+    perspective: 1000px; /* perspective for 3D effect */
     padding: 10px 10px 10px 10px;
     background: #fff;
     box-shadow: 0 5px 10px rgba(0,0,0,0.1);
@@ -265,46 +281,43 @@ button.clicked {
     cursor: pointer;
 }
 
-
-
 .teamImage {
     width: 100%;
     object-fit: cover;
 }
 
-
+/* Team Info List Styles */
 ul.infoList {
     padding-inline-start: 0px;
 }
 
-
 .infoList li {
-    background: #905e73; /* White background for the stats "cards" */
-    border: 1px solid #ddd; /* A subtle border */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    background: #905e73;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* soft shadow for depth */
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around; /* This will distribute space evenly around the items */
-    align-items: center; /* This aligns items vertically */
+    justify-content: space-around;
+    align-items: center;
     list-style-type: none;
-    text-align: center; /* Center the text */
+    text-align: center;
     padding-inline-start: 0px;
     padding: 5px;
 }
-  
+
+/* Team Card Flip Styles */
   .teamCard.is-flipped {
     transform: scaleX(-1);
     transform-style: preserve-3d;
   }
   
-  .card__face { /* Front and back of the card */
+  .card__face {
     color: white;
     align-items: center;
     -webkit-backface-visibility: hidden; 
     backface-visibility: hidden;
     transition: transform 0.5s ease 0.1s, opacity 0.3s ease 0.1s;
   }
-
 
 .card__face--back {
     position: absolute;
@@ -321,7 +334,6 @@ ul.infoList {
     width: 80%;
     margin: auto;
 }
-  
 
   .teamCard:not(.is-flipped) .card__face--back {
     transform: scaleX(1);
@@ -340,56 +352,7 @@ ul.infoList {
     opacity: 1;
   }
 
-
-
-
-
-
-
-
-
-
-
-/* Styles Navigationsbutton */
-.teamVerlinkung {
-    background-color: #ddd;
-    color: #213452;
-    padding: 10px;
-    border: none;
-    font-family: 'Truculenta', sans-serif;
-    font-size: 16px;
-}
-
-.teamVerlinkung:hover {
-    background-color: #213452;
-    color: #ddd;
-    padding: 10px;
-    cursor: pointer;
-    font-family: 'Truculenta', sans-serif;
-    font-size: 16px;
-}
-
-.startVerlinkung {
-    background-color: #ddd;
-    color: #213452;
-    padding: 10px;
-    border: none;
-    font-family: 'Truculenta', sans-serif;
-    font-size: 16px;
-}
-
-.startVerlinkung:hover {
-    background-color: #905e73;
-    color: #ddd;
-    padding: 10px;
-    cursor: pointer;
-    font-family: 'Truculenta', sans-serif;
-    font-size: 16px;
-}
-
-
-
-/* Responsive */
+/* Responsive Styles */
  @media (min-width: 1750px) {
     .cardHeader h2{
         font-size: 65px;
@@ -398,7 +361,6 @@ ul.infoList {
     .card__face--back {
         font-size: 50px;
     }
-    
 } 
 
 @media (max-width: 1024px) {
@@ -429,9 +391,9 @@ ul.infoList {
 
     .cardHeader h2 {
         font-size: 8vw;
+    }
+}
 
-}
-}
 @media (max-width: 600px) {
     .fruchtCard {
         margin: 5px 5px 5px 5px; 
@@ -442,7 +404,5 @@ ul.infoList {
 
     .popup-fruchtCard .fruchtCard {
         width: calc(80% - 20px);
-    }
-
-    
+    } 
 }
