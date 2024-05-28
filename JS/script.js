@@ -174,10 +174,15 @@ function popupCard() {
 
     // Event listener to close the popup when close button is clicked
     closeBtn.addEventListener('click', function() {
-        popup.style.display = 'none';
+        popup.style.display = 'none'; 
     });
 
-    // }, 500);
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            popup.style.display = 'none';
+        }
+    });
+
 }
 
 popup.style.display = 'none';
