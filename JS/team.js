@@ -1,4 +1,3 @@
-// const cardTeam = document.querySelector('#cardTeam');
 const teamCardContainer = document.querySelector("#teamCards");
 const anzahlTeam = 3;
 
@@ -30,11 +29,9 @@ let meinTeam = [
 //__________________________________________________
 //dom loaded
 //__________________________________________________
-//__________________________________________________
 //Event Listener
 //__________________________________________________
 document.addEventListener('DOMContentLoaded', function () {
-    //cardTeam.innerHTML = '';
     meinTeam.forEach(team => {
        createCard(team);
     });
@@ -95,10 +92,8 @@ function createCard(team) {
     nameBackElement.textContent = `Über ${team.name}`;
 
 
-
     backHeader.appendChild(nameBackElement);
     cardBack.appendChild(backHeader);
-
 
 
     let infoList = document.createElement('ul');
@@ -119,7 +114,6 @@ function createCard(team) {
     let favorite = document.createElement('li');
     favorite.textContent = `is(s)t eine ${team.favorite}`;
     infoList.appendChild(favorite);
-
 
 
     cardBack.appendChild(infoList);
