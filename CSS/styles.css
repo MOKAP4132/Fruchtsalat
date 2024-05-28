@@ -84,7 +84,13 @@ div.sortby {
     transition: transform 0.2s ease;
     flex: 0 0 33%;
     border: 1px solid #213452;
+    cursor: pointer;
+    padding: 10px;
+    background-color: #fff;
+    margin: 0 auto 20px auto;
+    display: block;
 }
+
 
 .fruchtCard:hover {
     transform: translateY(-5px);
@@ -127,13 +133,7 @@ div.sortby {
     z-index: 9999;
 }
 
-/* Styles for fruchtCard */
-.fruchtCard {
-    cursor: pointer;
-    padding: 10px;
-    background-color: #fff;
-    margin: 10px;
-}
+
 
 .cardHeader {
     display: flex;
@@ -147,7 +147,7 @@ div.sortby {
 .cardHeader h2 {
     margin: 0;
     color: #905e73;
-    font-size: 2em;
+    font-size: 4vw;
     align-items: center;
     text-align: center;
 }
@@ -311,7 +311,9 @@ ul.infoList {
     justify-content: center;
     align-items: center;
     color: #fff;
-    font-size: 2em;
+    font-size: 3vw;
+    width: 80%;
+    margin: auto;
 }
   
 
@@ -382,6 +384,17 @@ ul.infoList {
 
 
 /* Responsive */
+ @media (min-width: 1750px) {
+    .cardHeader h2{
+        font-size: 65px;
+    }
+
+    .card__face--back {
+        font-size: 50px;
+    }
+    
+} 
+
 @media (max-width: 1024px) {
     .fruchtCard {
         width: calc(50% - 20px);
@@ -390,8 +403,10 @@ ul.infoList {
 
 @media (max-width: 768px) {
     .fruchtCard {
-        width: calc(50% - 20px);
-        flex: 0 0 100%;
+        margin: auto; 
+        width: calc(80% - 20px);
+        flex: 0 0 auto;
+        display: block;
     }
 
     #teamCards{
@@ -400,11 +415,28 @@ ul.infoList {
         margin-left: auto;
         margin-right: auto;
     }
-}
 
+    .card__face--back {
+        font-size: 8vw;
+        width: 100%;
+    }
+
+    .cardHeader h2 {
+        font-size: 8vw;
+
+}
+}
 @media (max-width: 600px) {
     .fruchtCard {
-        width: 100%;
-        flex: 0 0 100%;
+        margin: 5px 5px 5px 5px; 
+        width: calc(95% - 20px);
+        flex: 0 0 auto;
+        display: block;
     }
+
+    .popup-fruchtCard .fruchtCard {
+        width: calc(80% - 20px);
+    }
+
+    
 }

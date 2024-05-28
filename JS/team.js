@@ -22,7 +22,7 @@ let meinTeam = [
         skills : ["künstlerisch"],
         age : 23,
         city : "Wangen",
-        favorite : "Apfel"
+        favorite : "Banane"
     }
 ]
 
@@ -76,7 +76,7 @@ function createCard(team) {
     cardFront.appendChild(cardHeader);
 
     let teamImage = document.createElement('img');
-    teamImage.src =`../pictures/${team.name}.png`;
+    teamImage.src =`../pictures/${team.name}.jpg`;
     teamImage.alt = team.name;
     teamImage.className = 'teamImage';
     cardFront.appendChild(teamImage);
@@ -109,7 +109,7 @@ function createCard(team) {
     infoList.appendChild(city);
 
     let skills = document.createElement('li');
-    skills.textContent = `ist besonders ${team.skills}`;
+    skills.textContent = `ist ${team.skills}`;
     infoList.appendChild(skills);
 
     let age = document.createElement('li');
@@ -117,7 +117,7 @@ function createCard(team) {
     infoList.appendChild(age);
 
     let favorite = document.createElement('li');
-    favorite.textContent = `${team.favorite}`;
+    favorite.textContent = `is(s)t eine ${team.favorite}`;
     infoList.appendChild(favorite);
 
 
