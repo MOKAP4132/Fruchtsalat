@@ -240,8 +240,12 @@ button.clicked {
 
 .teamCardOuter { 
     margin: 40px 10px 10px 10px;
+    transition: transform 0.2s ease;
   }
   
+.teamCardOuter:hover {
+    transform: translateY(-5px);
+  }
 
 /* styles for Team Cards */
 #teamCards {
@@ -260,6 +264,8 @@ button.clicked {
     border: 1px solid #905e73;
     cursor: pointer;
 }
+
+
 
 .teamImage {
     width: 100%;
